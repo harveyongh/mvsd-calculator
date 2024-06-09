@@ -1,15 +1,14 @@
 import numpy as np
+import unittest
 
 def calculate(list):
+    if not len(list) == 9:
+        raise ValueError('List must contain nine numbers.')
     arr = np.array(list).reshape(3,3)
-    calculations = {'mean':[arr.mean(axis=0), arr.mean(axis=1), arr.mean()],
-                    'variance':[arr.var(axis=0), arr.var(axis=1), arr.var()],
-                    'standard deviation':[arr.std(axis=0), arr.std(axis=1), arr.std()],
-                    'max':[arr.max(axis=0), arr.max(axis=1), arr.max()],
-                    'min':[arr.min(axis=0), arr.min(axis=1), arr.min()],
-                    'sum':[arr.sum(axis=0), arr.sum(axis=1), arr.sum()]}
+    calculations = {'mean':[arr.mean(axis=0).tolist(), arr.mean(axis=1).tolist(), arr.mean()],
+                    'variance':[arr.var(axis=0).tolist(), arr.var(axis=1).tolist(), arr.var()],
+                    'standard deviation':[arr.std(axis=0).tolist(), arr.std(axis=1).tolist(), arr.std()],
+                    'max':[arr.max(axis=0).tolist(), arr.max(axis=1).tolist(), arr.max()],
+                    'min':[arr.min(axis=0).tolist(), arr.min(axis=1).tolist(), arr.min()],
+                    'sum':[arr.sum(axis=0).tolist(), arr.sum(axis=1).tolist(), arr.sum()]}
     return calculations
-
-
-data = calculate([0,1,2,3,4,5,6,7,8])
-print(data)
